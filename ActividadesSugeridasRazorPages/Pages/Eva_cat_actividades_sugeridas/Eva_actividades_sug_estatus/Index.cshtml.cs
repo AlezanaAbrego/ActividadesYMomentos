@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ActividadesSugeridasRazorPages.Models;
 
-namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
+namespace ActividadesSugeridasRazorPages.Pages.Eva_actividades_sug_estatus
 {
     public class IndexModel : PageModel
     {
@@ -18,9 +18,12 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
             _context = context;
         }
 
-        public IList<ActividadSugeridaEstatus> ActividadSugeridaEstatus { get; set; }
+        public IList<Eva_actividad_sug_estatus> Eva_actividades_sug_estatus { get; set; }
         public IList<Eva_cat_tipo_actividad_sugerida> Eva_cat_tipo_actividad_sugerida { get; set; }
         public IList<Eva_cat_actividad_sugerida> Eva_cat_actividad_sugerida { get; set; }
+        public IList<Cat_tipo_estatus> Cat_tipo_estatus { get; set; }
+        public IList<Models.Cats> Cat_estatus { get; set; }
+       
 
 
         public string message;
@@ -28,15 +31,15 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
         public string tipo;
         public int Tipos;
         public int IdDescripcion;
-        public short? IdActividad;
+        public int? IdActividad;
 
 
-        public async Task OnGetAsync(short? id)
+        public async Task OnGetAsync(int? id)
         {
-            ActividadSugeridaEstatus = await _context.ActividadesSugeridasEstatus
+            Eva_actividades_sug_estatus = await _context.Eva_actividades_sug_estatus
                 .Include(a => a.Eva_cat_actividades_sugeridas)
                 .Include(a => a.Eva_cat_tipo_actividades_sugeridas)
-                .Include(a => a.TiposEstatus).ToListAsync();
+                .Include(a => a.IdEstatus).ToListAsync();
 
             Eva_cat_actividad_sugerida = await _context.Eva_cat_actividades_sugeridas
                 .Include(a => a.Eva_cat_tipo_actividades_sugeridas).ToListAsync();

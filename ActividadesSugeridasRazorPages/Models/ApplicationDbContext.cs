@@ -17,9 +17,15 @@ namespace ActividadesSugeridasRazorPages.Models
 
         public DbSet<Eva_cat_actividad_sugerida> Eva_cat_actividades_sugeridas { get; set; }
 
-        public DbSet<ActividadSugeridaEstatus> ActividadesSugeridasEstatus { get; set; }
+        
+        public DbSet<Eva_actividad_sug_estatus> Eva_actividades_sug_estatus { get; set; }
 
-        public DbSet<TipoEstatus> TiposEstatus { get; set; }
+       
+
+        public DbSet<Cat_tipo_estatus> Cat_tipos_estatus { get; set; }
+
+        public DbSet<Cats_estatus> cat_estatus { get; set; }
+
 
     }
 }

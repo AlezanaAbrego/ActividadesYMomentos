@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Specialized;
 
-namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
+namespace ActividadesSugeridasRazorPages.Pages.Eva_actividades_sug_estatus
 {
     
     public class CreateModel : PageModel
@@ -60,7 +60,7 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
 
             ViewData["IdActividadSugerida"] = idAct; // new SelectList(_context.ActividadesSugeridas, "IdActividadSugerida", "DesActividad");
             ViewData["IdTipoActividadSug"] = idTipo;// new SelectList(_context.TipoActividadesSugeridas, "IdTipoActividadSugerida", "DesTipoActividadSugerida");
-            ViewData["IdTipoEstatus"] = new SelectList(_context.Set<TipoEstatus>(), "IdTipoEstatus", "DesTipoEstatus");
+            //ViewData["IdTipoEstatus"] = new SelectList(_context.Set<TipoEstatus>(), "IdTipoEstatus", "DesTipoEstatus");
             return Page();
             
         }
@@ -98,7 +98,7 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
         } */
 
         [BindProperty]
-        public ActividadSugeridaEstatus ActividadSugeridaEstatus { get; set; }
+        public Eva_actividad_sug_estatus Eva_actividad_sug_estatus { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -110,7 +110,7 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
             }
 
 
-            _context.ActividadesSugeridasEstatus.Add(ActividadSugeridaEstatus);
+            _context.Eva_actividades_sug_estatus.Add(Eva_actividad_sug_estatus);
             await _context.SaveChangesAsync();
 
             idAct = Request.Query["id"];

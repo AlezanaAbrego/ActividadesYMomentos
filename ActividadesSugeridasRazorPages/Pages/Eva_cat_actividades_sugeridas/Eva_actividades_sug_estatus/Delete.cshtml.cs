@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ActividadesSugeridasRazorPages.Models;
 
-namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
+namespace ActividadesSugeridasRazorPages.Pages.Eva_actividades_sug_estatus
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
         }
 
         [BindProperty]
-        public ActividadSugeridaEstatus ActividadSugeridaEstatus { get; set; }
+        public Eva_actividad_sug_estatus Eva_actividad_sug_estatus { get; set; }
 
         public async Task<IActionResult> OnGetAsync(short? id)
         {
@@ -30,12 +30,12 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
                 return NotFound();
             }
 
-            ActividadSugeridaEstatus = await _context.ActividadesSugeridasEstatus
+            Eva_actividad_sug_estatus = await _context.Eva_actividades_sug_estatus
                 .Include(a => a.Eva_cat_actividades_sugeridas)
                 .Include(a => a.Eva_cat_tipo_actividades_sugeridas)
-                .Include(a => a.TiposEstatus).SingleOrDefaultAsync(m => m.IdEstatusDet == id);
+                .Include(a => a.IdEstatus).SingleOrDefaultAsync(m => m.IdEstatusDet == id);
 
-            if (ActividadSugeridaEstatus == null)
+            if (Eva_actividad_sug_estatus == null)
             {
                 return NotFound();
             }
@@ -49,11 +49,11 @@ namespace ActividadesSugeridasRazorPages.Pages.ActividadesSugeridasEstatus
                 return NotFound();
             }
 
-            ActividadSugeridaEstatus = await _context.ActividadesSugeridasEstatus.FindAsync(id);
+            Eva_actividad_sug_estatus = await _context.Eva_actividades_sug_estatus.FindAsync(id);
 
-            if (ActividadSugeridaEstatus != null)
+            if (Eva_actividad_sug_estatus != null)
             {
-                _context.ActividadesSugeridasEstatus.Remove(ActividadSugeridaEstatus);
+                _context.Eva_actividades_sug_estatus.Remove(Eva_actividad_sug_estatus);
                 await _context.SaveChangesAsync();
             }
 
